@@ -25,7 +25,7 @@ public:
 
     void add(T data);
     void remove(T data);
-    void print(Node<T>* node, int indent = 0);
+    void print();
 
 private:
     Node<T>* newNode(T data);
@@ -37,6 +37,8 @@ private:
     Node<T>* deleteNode(Node<T>* root, T data);
     int height(Node<T>* N);
     int max(int a, int b);
+
+    void print(Node<T>* node, int indent);
 };
 
 #include "AVLTree.cpp"

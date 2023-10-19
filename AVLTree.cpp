@@ -11,6 +11,15 @@ void AVLTree<T>::remove(T data) {
 }
 
 template <typename T>
+void AVLTree<T>::print() {
+    if (root != nullptr) {
+        print(root, 0);
+    } else {
+        std::cout << "The tree is empty." << std::endl;
+    }
+}
+
+template <typename T>
 void AVLTree<T>::print(Node<T>* node, int indent) {
     if (node != nullptr) {
         if (node->right) {
@@ -142,7 +151,7 @@ Node<T>* AVLTree<T>::deleteNode(Node<T>* root, T data) {
             } else
                 *root = *temp;
 
-            free(temp);
+            delete temp;
         } else {
             Node<T>* temp = minValueNode(root->right);
 
