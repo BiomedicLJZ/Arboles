@@ -21,24 +21,34 @@ class AVLTree {
 public:
     Node<T>* root;
 
-    AVLTree() : root(nullptr) {}
+    AVLTree();
 
     void add(T data);
+
     void remove(T data);
+
     void print();
 
 private:
-    Node<T>* newNode(T data);
-    Node<T>* rightRotate(Node<T>* y);
-    Node<T>* leftRotate(Node<T>* x);
-    int getBalance(Node<T>* N);
-    Node<T>* insert(Node<T>* node, T data);
-    Node<T>* minValueNode(Node<T>* node);
-    Node<T>* deleteNode(Node<T>* root, T data);
-    int height(Node<T>* N);
-    int max(int a, int b);
-
     void print(Node<T>* node, int indent);
+
+    Node<T>* newNode(T data);
+
+    Node<T>* rightRotate(Node<T>* y);
+
+    Node<T>* leftRotate(Node<T>* x);
+
+    int getBalance(Node<T>* N);
+
+    Node<T>* insert(Node<T>* node, T data);
+
+    Node<T>* minValueNode(Node<T>* node);
+
+    Node<T>* deleteNode(Node<T>* root, T data);
+
+    int height(Node<T>* N);
+
+    int max(int a, int b);
 };
 
 #include "AVLTree.cpp"

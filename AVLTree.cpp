@@ -1,6 +1,9 @@
 #include "AVLTree.h"
 
 template <typename T>
+AVLTree<T>::AVLTree() : root(nullptr) {}
+
+template <typename T>
 void AVLTree<T>::add(T data) {
     root = insert(root, data);
 }
@@ -28,7 +31,9 @@ void AVLTree<T>::print(Node<T>* node, int indent) {
         if (indent) {
             std::cout << std::setw(indent) << ' ';
         }
-        if (node->right) std::cout << " /\n" << std::setw(indent) << ' ';
+        if (node->right) {
+            std::cout << " /\n" << std::setw(indent) << ' ';
+        }
         std::cout << node->data << "\n ";
         if (node->left) {
             std::cout << std::setw(indent) << ' ' << " \\\n";

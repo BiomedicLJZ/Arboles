@@ -9,7 +9,7 @@ int main() {
     tree.add(5);
     
     std::cout << "After adding one node:" << std::endl;
-    tree.print(tree.root);
+    tree.print();
     std::cout << "\n-------------------------\n";
 
     // Test 2: Add and print multiple nodes.
@@ -21,7 +21,7 @@ int main() {
     tree.add(8);
 
     std::cout << "After adding multiple nodes:" << std::endl;
-    tree.print(tree.root);
+    tree.print();
     std::cout << "\n-------------------------\n";
     return 0;
 }
