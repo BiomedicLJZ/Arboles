@@ -1,0 +1,5 @@
+# ninja log v5
+13	757	7193812684722759	CMakeFiles/Arboles.dir/Binary_Tree.cpp.obj	cc4091ac29ccd737
+1	788	7193818130223253	CMakeFiles/Arboles.dir/main.cpp.obj	c366a3013d7b8a7
+788	1427	7193818135546250	Arboles.exe	9e797033d3dee5d
+1	184	7193818993252628	build.ninja	4b74bf2bb71aeca3
