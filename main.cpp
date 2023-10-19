@@ -23,5 +23,12 @@ int main() {
     std::cout << "After adding multiple nodes:" << std::endl;
     tree.print();
     std::cout << "\n-------------------------\n";
+
+    // Test 3: Remove a node and print.
+    tree.remove(3);
+    tree.remove(8);
+    std::cout << "\n-------------------------\n";
+    std::cout << "After removing 3 and 8:" << std::endl;
+    tree.print();
     return 0;
 }

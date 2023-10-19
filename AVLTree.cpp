@@ -147,8 +147,7 @@ Node<T>* AVLTree<T>::deleteNode(Node<T>* root, T data) {
 
     else {
         if ((root->left == nullptr) || (root->right == nullptr)) {
-            Node<T>* temp = root->left ? root->left :
-                                       root->right;
+            Node<T>* temp = root->left ? root->left : root->right;
 
             if (temp == nullptr) {
                 temp = root;
@@ -173,21 +172,19 @@ Node<T>* AVLTree<T>::deleteNode(Node<T>* root, T data) {
 
     int balance = getBalance(root);
 
-    // If this node becomes unbalanced, then there are 4 cases
+    /* There are four cases to handle: */
+
     // Left Left Case
     if (balance > 1 && getBalance(root->left) >= 0)
         return rightRotate(root);
-
     // Left Right Case
     if (balance > 1 && getBalance(root->left) < 0) {
         root->left = leftRotate(root->left);
         return rightRotate(root);
     }
-
     // Right Right Case
     if (balance < -1 && getBalance(root->right) <= 0)
         return leftRotate(root);
-
     // Right Left Case
     if (balance < -1 && getBalance(root->right) > 0) {
         root->right = rightRotate(root->right);
