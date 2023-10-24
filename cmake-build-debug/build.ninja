@@ -56,6 +56,13 @@ build CMakeFiles\Arboles.dir\main.cpp.obj: CXX_COMPILER__Arboles_unscanned_Debug
   TARGET_COMPILE_PDB = CMakeFiles\Arboles.dir\
   TARGET_PDB = Arboles.pdb
 
+build CMakeFiles\Arboles.dir\Binary_SearchTree.cpp.obj: CXX_COMPILER__Arboles_unscanned_Debug D$:\Documentos\UNIAT\Clases\Programacion3\Arboles\Binary_SearchTree.cpp || cmake_object_order_depends_target_Arboles
+  FLAGS = /DWIN32 /D_WINDOWS /EHsc /Ob0 /Od /RTC1 -std:c++17 -MDd -Zi
+  OBJECT_DIR = CMakeFiles\Arboles.dir
+  OBJECT_FILE_DIR = CMakeFiles\Arboles.dir
+  TARGET_COMPILE_PDB = CMakeFiles\Arboles.dir\
+  TARGET_PDB = Arboles.pdb
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target Arboles
@@ -64,7 +71,7 @@ build CMakeFiles\Arboles.dir\main.cpp.obj: CXX_COMPILER__Arboles_unscanned_Debug
 #############################################
 # Link the executable Arboles.exe
 
-build Arboles.exe: CXX_EXECUTABLE_LINKER__Arboles_Debug CMakeFiles\Arboles.dir\main.cpp.obj
+build Arboles.exe: CXX_EXECUTABLE_LINKER__Arboles_Debug CMakeFiles\Arboles.dir\main.cpp.obj CMakeFiles\Arboles.dir\Binary_SearchTree.cpp.obj
   FLAGS = /DWIN32 /D_WINDOWS /EHsc /Ob0 /Od /RTC1 -MDd -Zi
   LINK_FLAGS = /machine:x64 /debug /INCREMENTAL /subsystem:console
   LINK_LIBRARIES = kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib

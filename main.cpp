@@ -1,6 +1,7 @@
 // main.cpp
 #include <iostream>
 #include "AVLTree.h"
+#include "Storage_Tree.h"
 
 int main() {
     AVLTree<int> tree;
@@ -25,8 +26,7 @@ int main() {
     std::cout << "\n-------------------------\n";
 
     // Test 3: Remove a node and print.
-    tree.remove(3);
-    tree.remove(8);
+    tree.remove(5);
     std::cout << "\n-------------------------\n";
     std::cout << "After removing 3 and 8:" << std::endl;
     tree.print();
