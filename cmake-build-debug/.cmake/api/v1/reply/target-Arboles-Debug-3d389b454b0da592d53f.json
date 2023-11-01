@@ -101,7 +101,8 @@
 				1,
 				2,
 				3,
-				5
+				5,
+				6
 			]
 		}
 	],
@@ -137,6 +138,11 @@
 		{
 			"backtrace" : 1,
 			"path" : "Binary_SearchTree.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "SplayTree.h",
 			"sourceGroupIndex" : 1
 		}
 	],

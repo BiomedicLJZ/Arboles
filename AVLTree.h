@@ -40,6 +40,16 @@ public:
         }
     }
 
+    std::shared_ptr<Node<T>> search(std::shared_ptr<Node<T>> node, T data) {
+        if (node == nullptr || node->data == data)
+            return node;
+
+        if (node->data < data)
+            return search(node->right, data);
+
+        return search(node->left, data);
+    }
+
 private:
     void print(std::shared_ptr<Node<T>> node, int indent) {
         if(node) {

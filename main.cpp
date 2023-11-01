@@ -2,6 +2,7 @@
 #include <iostream>
 #include "AVLTree.h"
 #include "Storage_Tree.h"
+#include "SplayTree.h"
 
 int main() {
     AVLTree<int> tree;
@@ -30,5 +31,11 @@ int main() {
     std::cout << "\n-------------------------\n";
     std::cout << "After removing 3 and 8:" << std::endl;
     tree.print();
+
+    // Test 4: Search for a node.
+    std::cout << "\n-------------------------\n";
+    std::cout << "Searching for 3: " << tree.search(tree.root, 3)->data << std::endl;
+    std::cout << "Searching for 7: " << tree.search(tree.root, 7)->data << std::endl;
+    std::cout << "Searching for 2: " << tree.search(tree.root, 2)->data << std::endl;
     return 0;
 }
