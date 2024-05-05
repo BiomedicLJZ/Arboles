@@ -1,3 +1,7 @@
+#ifndef AVLTREE_H
+#define AVLTREE_H
+#include <iostream>
+
 struct Node {
     int value;
     Node* left;
@@ -183,4 +187,33 @@ public:
     void remove(int value) {
         root = deleteNode(root, value);
     }
+
+    void inorderTraversal(Node* node) {
+        if (node == nullptr)
+            return;
+
+        inorderTraversal(node->left);
+        std::cout << node->value << " ";
+        inorderTraversal(node->right);
+    }
+
+    void preorderTraversal(Node* node) {
+        if (node == nullptr)
+            return;
+
+        std::cout << node->value << " ";
+        preorderTraversal(node->left);
+        preorderTraversal(node->right);
+    }
+
+    void postorderTraversal(Node* node) {
+        if (node == nullptr)
+            return;
+
+        postorderTraversal(node->left);
+        postorderTraversal(node->right);
+        std::cout << node->value << " ";
+    }
 };
+
+#endif // AVLTREE_H
