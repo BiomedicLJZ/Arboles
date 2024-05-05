@@ -1,6 +1,4 @@
 # ninja log v5
-13	757	7193812684722759	CMakeFiles/Arboles.dir/Binary_Tree.cpp.obj	cc4091ac29ccd737
-1	927	7194447807822370	CMakeFiles/Arboles.dir/main.cpp.obj	c366a3013d7b8a7
-928	1557	7194447813262772	Arboles.exe	9e797033d3dee5d
-1	218	7205012408099733	build.ninja	4b74bf2bb71aeca3
-0	862	7194441539319493	CMakeFiles/Arboles.dir/Binary_test.cpp.obj	2f7a98c33937183d
+7	1354	7364656133113058	CMakeFiles/Arboles.dir/main.cpp.obj	342caf748ce9b9d4
+1355	2003	7364656139458210	Arboles.exe	4ec8f43129752ac3
+3	565	7366374206046050	build.ninja	ba45104fe107c232

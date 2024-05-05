@@ -1,138 +1,92 @@
-#ifndef AVL_TREE_H
-#define AVL_TREE_H
-
-#include<iostream>
-#include<iomanip>
-#include<algorithm>
-#include<memory>
-
-template <typename T>
-class Node {
-public:
-    T data;
+struct Node {
+    int value;
+    Node* left;
+    Node* right;
     int height;
-    std::shared_ptr<Node<T>> left;
-    std::shared_ptr<Node<T>> right;
-
-    Node(T data) : data(data), height(1), left(nullptr), right(nullptr) {}
 };
 
-template <typename T>
 class AVLTree {
-public:
-    std::shared_ptr<Node<T>> root;
-
-    AVLTree(): root(nullptr) {}
-
-    void add(T data) {
-        root = insert(root, data);
-    }
-
-    void remove(T data)  {
-        root = deleteNode(root, data);
-    }
-
-    void print() {
-        if (root != nullptr) {
-            print(root, 0);
-        } else {
-            std::cout << "The tree is empty." << std::endl;
-        }
-    }
-
-    std::shared_ptr<Node<T>> search(std::shared_ptr<Node<T>> node, T data) {
-        if (node == nullptr || node->data == data)
-            return node;
-
-        if (node->data < data)
-            return search(node->right, data);
-
-        return search(node->left, data);
-    }
-
 private:
-    void print(std::shared_ptr<Node<T>> node, int indent) {
-        if(node) {
-            if(node->right) {
-                print(node->right, indent + 8);
-            }
-            if (indent) {
-                std::cout << std::setw(indent) << ' ';
-            }
-            if (node->right) {
-                std::cout << " / (Right of " << node->data << ")\n" << std::setw(indent) << ' ';
-            }
-            std::cout << node->data << "\n" ;
-            if (node->left) {
-                std::cout << std::setw(indent) << ' ' << " \\ (Left of " << node->data << ")\n";
-                print(node->left, indent + 8);
-            }
-        }
+    Node* root;
+
+    int getNodeHeight(Node* N) {
+        if (N == nullptr)
+            return 0;
+        return N->height;
     }
 
-    std::shared_ptr<Node<T>> newNode(T data) {
-        return std::make_shared<Node<T>>(data);
+    int maxHeight(int a, int b) {
+        return (a > b)? a : b;
     }
 
-    std::shared_ptr<Node<T>> rightRotate(std::shared_ptr<Node<T>> y) {
-        std::shared_ptr<Node<T>> x = y->left;
-        std::shared_ptr<Node<T>> T2 = x->right;
+    Node* newNode(int value) {
+        Node* node = new Node();
+        node->value = value;
+        node->left = nullptr;
+        node->right = nullptr;
+        node->height = 1;
+        return(node);
+    }
+
+    Node* rightRotate(Node* y) {
+        Node* x = y->left;
+        Node* T2 = x->right;
 
         x->right = y;
         y->left = T2;
 
-        y->height = max(height(y->left), height(y->right))+1;
-        x->height = max(height(x->left), height(x->right))+1;
+        y->height = maxHeight(getNodeHeight(y->left), getNodeHeight(y->right)) + 1;
+        x->height = maxHeight(getNodeHeight(x->left), getNodeHeight(x->right)) + 1;
 
         return x;
     }
 
-    std::shared_ptr<Node<T>> leftRotate(std::shared_ptr<Node<T>> x) {
-        std::shared_ptr<Node<T>> y = x->right;
-        std::shared_ptr<Node<T>> T2 = y->left;
+    Node* leftRotate(Node* x) {
+        Node* y = x->right;
+        Node* T2 = y->left;
 
         y->left = x;
         x->right = T2;
 
-        x->height = max(height(x->left),height(x->right))+1;
-        y->height = max(height(y->left),height(y->right))+1;
+        x->height = maxHeight(getNodeHeight(x->left), getNodeHeight(x->right)) + 1;
+        y->height = maxHeight(getNodeHeight(y->left), getNodeHeight(y->right)) + 1;
 
         return y;
     }
 
-    int getBalance(std::shared_ptr<Node<T>> N) {
+    int getBalance(Node* N) {
         if (N == nullptr)
             return 0;
-        return height(N->left) - height(N->right);
+        return getNodeHeight(N->left) - getNodeHeight(N->right);
     }
 
-    std::shared_ptr<Node<T>> insert(std::shared_ptr<Node<T>> node, T data) {
+    Node* insertNode(Node* node, int value) {
         if (node == nullptr)
-            return (newNode(data));
+            return(newNode(value));
 
-        if (data < node->data)
-            node->left = insert(node->left, data);
-        else if (data > node->data)
-            node->right = insert(node->right, data);
+        if (value < node->value)
+            node->left = insertNode(node->left, value);
+        else if (value > node->value)
+            node->right = insertNode(node->right, value);
         else
             return node;
 
-        node->height = 1 + max(height(node->left), height(node->right));
+        node->height = 1 + maxHeight(getNodeHeight(node->left), getNodeHeight(node->right));
 
         int balance = getBalance(node);
 
-        if (balance > 1 && data < node->left->data)
+        if (balance > 1 && value < node->left->value)
             return rightRotate(node);
 
-        if (balance < -1 && data > node->right->data)
+        if (balance < -1 && value > node->right->value)
             return leftRotate(node);
 
-        if (balance > 1 && data > node->left->data) {
+        if (balance > 1 && value > node->left->value) {
             node->left = leftRotate(node->left);
             return rightRotate(node);
         }
 
-        if (balance < -1 && data < node->right->data) {
+        if (balance < -1 && value < node->right->value) {
             node->right = rightRotate(node->right);
             return leftRotate(node);
         }
@@ -140,8 +94,8 @@ private:
         return node;
     }
 
-    std::shared_ptr<Node<T>> minValueNode(std::shared_ptr<Node<T>> node) {
-        std::shared_ptr<Node<T>> current = node;
+    Node* minValueNode(Node* node) {
+        Node* current = node;
 
         while (current->left != nullptr)
             current = current->left;
@@ -149,45 +103,53 @@ private:
         return current;
     }
 
-    std::shared_ptr<Node<T>> deleteNode(std::shared_ptr<Node<T>> root, T data) {
-        if (!root)
+    Node* deleteNode(Node* root, int value) {
+        if (root == nullptr)
             return root;
 
-        if (data < root->data) {
-            root->left = deleteNode(root->left, data);
-        }
-        else if(data > root->data) {
-            root->right = deleteNode(root->right, data);
-        }
+        if ( value < root->value )
+            root->left = deleteNode(root->left, value);
+        else if( value > root->value )
+            root->right = deleteNode(root->right, value);
         else {
-            if(!root->left || !root->right) {
-                root = (root->left) ? root->left : root->right;
+            if( (root->left == nullptr) || (root->right == nullptr) ) {
+                Node *temp = root->left ? root->left : root->right;
+
+                if(temp == nullptr) {
+                    temp = root;
+                    root = nullptr;
+                }
+                else
+                    *root = *temp;
+
+                delete temp;
             }
             else {
-                std::shared_ptr<Node<T>> temp = minValueNode(root->right);
-                root->data = temp->data;
-                root->right = deleteNode(root->right, temp->data);
-                temp.reset();
+                Node* temp = minValueNode(root->right);
+
+                root->value = temp->value;
+
+                root->right = deleteNode(root->right, temp->value);
             }
         }
 
-        if(!root)
+        if (root == nullptr)
             return root;
 
-        root->height = 1 + max(height(root->left), height(root->right));
+        root->height = 1 + maxHeight(getNodeHeight(root->left), getNodeHeight(root->right));
 
         int balance = getBalance(root);
 
         if (balance > 1 && getBalance(root->left) >= 0)
             return rightRotate(root);
 
-        if (balance < -1 && getBalance(root->right) <= 0)
-            return leftRotate(root);
-
         if (balance > 1 && getBalance(root->left) < 0) {
             root->left = leftRotate(root->left);
             return rightRotate(root);
         }
+
+        if (balance < -1 && getBalance(root->right) <= 0)
+            return leftRotate(root);
 
         if (balance < -1 && getBalance(root->right) > 0) {
             root->right = rightRotate(root->right);
@@ -197,15 +159,28 @@ private:
         return root;
     }
 
-    int height(std::shared_ptr<Node<T>> N) {
-        if (N == nullptr)
-            return 0;
-        return N->height;
+    void deleteTree(Node* node) {
+        if (node == nullptr)
+            return;
+
+        deleteTree(node->left);
+        deleteTree(node->right);
+
+        delete node;
     }
 
-    int max(int a, int b) {
-        return (a > b)? a : b;
+public:
+    AVLTree() : root(nullptr) {}
+
+    ~AVLTree() {
+        deleteTree(root);
+    }
+
+    void insert(int value) {
+        root = insertNode(root, value);
+    }
+
+    void remove(int value) {
+        root = deleteNode(root, value);
     }
 };
-
-#endif /* AVL_TREE_H */
