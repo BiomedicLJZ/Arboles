@@ -10,6 +10,10 @@ struct Node {
 };
 
 class AVLTree {
+    public:
+    void printTree() {
+        printTree(root, 0, 10);
+    }
 private:
     Node* root;
 
@@ -214,6 +218,25 @@ public:
         postorderTraversal(node->right);
         std::cout << node->value << " ";
     }
+    void printTree(Node* root, int space = 0, int COUNT = 10) {
+        if (root == nullptr) {
+            return;
+        }
+
+        space += COUNT;
+        printTree(root->right, space);
+
+        std::cout << std::endl;
+
+        for (int i = COUNT; i < space; i++) {
+            std::cout << " ";
+        }
+
+        std::cout << root->value << "\n";
+
+        printTree(root->left, space);
+    }
 };
+
 
 #endif // AVLTREE_H
