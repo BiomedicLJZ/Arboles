@@ -4,7 +4,7 @@
 #include "AVLTree.h"
 #include "BinaryTree.h"
 #include <random>
-
+#include "SplayTree.h"
 
 int main() {
     BinarySearchTree *bst = new BinarySearchTree();
@@ -35,18 +35,57 @@ int main() {
 
 
     std::cout << "Inorder traversal of the given tree: ";
-    bst->inorderTraversal(bst->root);
+    //bst->inorderTraversal(bst->root);
 
     std::cout << std::endl;
-    bst->printTree(bst->root);
+  // bst->printTree(bst->root);
 
     AVLTree avl;
-
-    for (int i = 0; i < 100; i++) {
-         // Random number between 1 and 1000000
-        int random = rand() % 1000000 + 1;
-        avl.insert(random);
-    }
+    avl.insert(210);
+    avl.insert(200);
+    avl.insert(190);
+    avl.insert(180);
+     avl.insert(170) ;
+    avl.insert(160);
+    avl.insert(150);
+    avl.insert(140);
+    avl.insert(130);
+    avl.insert(120);
+    avl.insert(110);
+    avl.insert(100);
+    avl.insert(90);
+    avl.insert(80);
+    avl.insert(70);
+    avl.insert(60);
+    avl.insert(50);
+    avl.insert(40);
+    avl.insert(30);
+    avl.insert(20);
+    avl.insert(10) ;
+    avl.insert(1);
     avl.printTree();
+
+    SplayTree splay;
+    splay.insert(1000000);
+    splay.insert(100000);
+    splay.insert(80000);
+    splay.insert(50000);
+    splay.insert(34000);
+    splay.insert(25323);
+    splay.insert(16530);
+    splay.insert(10000);
+    splay.insert(5937);
+    splay.insert(4444);
+    splay.insert(4324);
+    splay.insert(4000);
+    splay.insert(3000);
+    splay.insert(2000);
+    splay.insert(1000);
+    splay.insert(500);
+    splay.insert(250);
+
+    splay.printTree()
+
+
     return 0;
 }

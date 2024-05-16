@@ -342,4 +342,16 @@ Estos poseen las funciones de busqueda, inserción y eliminación con una comple
 
 ### Implementación de un árbol AVL
 
-referirse al archivo `AVLTree.h` en este repositorio.
+referirse al archivo `AVLTree.h` en este repositorio. 
+
+#### Operaciones de un árbol AVL
+
+- Rotación simple a la derecha
+- Rotación simple a la izquierda
+- Rotación doble a la derecha
+- Rotación doble a la izquierda
+- Insertar
+- Eliminar
+- Buscar
+- Recorrer
+- Balancear

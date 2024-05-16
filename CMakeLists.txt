@@ -10,4 +10,5 @@ add_executable(Arboles main.cpp
         BinaryTree.h
         BinarySearchTree.h
         BinarySearchTree.h
+        SplayTree.h
 )
