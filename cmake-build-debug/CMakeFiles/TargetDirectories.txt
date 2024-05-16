@@ -1,3 +1,0 @@
-D:/Documentos/UNIAT/Clases/Programacion3/Arboles/cmake-build-debug/CMakeFiles/Arboles.dir
-D:/Documentos/UNIAT/Clases/Programacion3/Arboles/cmake-build-debug/CMakeFiles/edit_cache.dir
-D:/Documentos/UNIAT/Clases/Programacion3/Arboles/cmake-build-debug/CMakeFiles/rebuild_cache.dir
