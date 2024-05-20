@@ -1,6 +1,6 @@
 # Árboles
 
-Los árboles son una estructura de datos no lineal, que se compone de nodos, donde cada nodo puede tener cero o más nodos hijos. La estructura de árbol se utiliza en muchas aplicaciones. 
+Los árboles son una estructura de datos no lineales, que se compone de nodos, donde cada nodo puede tener cero o más nodos hijos. La estructura de árbol se utiliza en muchas aplicaciones. 
 
 Son una estructura de datos de suma importancia en el mundo de la informática, ya que se utilizan en la implementación de bases de datos, en la creación de compiladores, en la implementación de sistemas operativos, en la creación de algoritmos de búsqueda y ordenamiento, entre otros.
 
