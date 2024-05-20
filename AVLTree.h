@@ -3,7 +3,7 @@
 #include <iostream>
 
 struct Node {
-    int value;
+    float value;
     Node* left;
     Node* right;
     int height;
@@ -27,7 +27,7 @@ private:
         return (a > b)? a : b;
     }
 
-    Node* newNode(int value) {
+    Node* newNode(float value) {
         Node* node = new Node();
         node->value = value;
         node->left = nullptr;
@@ -68,7 +68,7 @@ private:
         return getNodeHeight(N->left) - getNodeHeight(N->right);
     }
 
-    Node* insertNode(Node* node, int value) {
+    Node* insertNode(Node* node, float value) {
         if (node == nullptr)
             return(newNode(value));
 
@@ -111,7 +111,7 @@ private:
         return current;
     }
 
-    Node* deleteNode(Node* root, int value) {
+    Node* deleteNode(Node* root, float value) {
         if (root == nullptr)
             return root;
 
@@ -184,11 +184,11 @@ public:
         deleteTree(root);
     }
 
-    void insert(int value) {
+    void insert(float value) {
         root = insertNode(root, value);
     }
 
-    void remove(int value) {
+    void remove(float value) {
         root = deleteNode(root, value);
     }
 
