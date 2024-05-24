@@ -15,21 +15,11 @@ class AVLTree {
     void printTree() {
         printTree(root, 0, 10);
     }
-    std::vector<float> searchPath(float value) {
-        return searchPath(root, value);
-    }
+
     Node *getRoot() {
         return root;
     }
-    bool contains(float value) {
-        return contains(root, value);
-    }
-    float findMin() {
-        return findMin(root);
-    }
-    float findMax() {
-        return findMax(root);
-    }
+
 private:
     Node* root;
 

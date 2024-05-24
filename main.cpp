@@ -70,15 +70,15 @@ int main() {
 
     avl.printTree(avl.getRoot());
 
-    float min = avl.findMin();
-    float max = avl.findMax();
+    float min = avl.findMin(avl.getRoot());
+    float max = avl.findMax(avl.getRoot());
     std::cout << "Min: " << min << " Max: " << max << std::endl;
-    bool found = avl.contains(5937);
+    bool found = avl.contains(avl.getRoot(),5937);
     std::cout << "Found 5937: " << found << std::endl;
-    found = avl.contains(5938);
+    found = avl.contains(avl.getRoot(),5938);
     std::cout << "Found 5938: " << found << std::endl;
 
-    std::vector<float> route = avl.searchPath(5937);
+    std::vector<float> route = avl.searchPath(avl.getRoot(),5937);
     std::cout <<  "Path to 5937: "; for(auto i:route) std::cout << i << " ";
     return 0;
 }
