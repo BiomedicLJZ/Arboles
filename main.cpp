@@ -42,11 +42,43 @@ int main() {
 
     AVLTree avl;
 
-    for (int i = 0; i < 100; i++) {
-         // Random number between 1 and 1000000
-        int random = rand() % 1000000 + 1;
-        avl.insert(random);
-    }
+    avl.insert(1000000);
+    avl.insert(100000);
+    avl.insert(80000);
+    avl.insert(50000);
+    avl.insert(34000);
+    avl.insert(25323);
+    avl.insert(16530);
+    avl.insert(10000);
+    avl.insert(5937);
+    avl.insert(4444);
+    avl.insert(4324);
+    avl.insert(4000);
+    avl.insert(3000);
+    avl.insert(2000);
+    avl.insert(1000);
+    avl.insert(500);
+    avl.insert(250);
+    avl.insert(100);
+    avl.insert(50);
+    avl.insert(25);
+    avl.insert(14);
+    avl.insert(10);
+    avl.insert(5);
+    avl.insert(1);
     avl.printTree();
+
+    avl.printTree(avl.getRoot());
+
+    float min = avl.findMin();
+    float max = avl.findMax();
+    std::cout << "Min: " << min << " Max: " << max << std::endl;
+    bool found = avl.contains(5937);
+    std::cout << "Found 5937: " << found << std::endl;
+    found = avl.contains(5938);
+    std::cout << "Found 5938: " << found << std::endl;
+
+    std::vector<float> route = avl.searchPath(5937);
+    std::cout <<  "Path to 5937: "; for(auto i:route) std::cout << i << " ";
     return 0;
 }

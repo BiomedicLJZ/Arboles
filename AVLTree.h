@@ -1,6 +1,7 @@
 #ifndef AVLTREE_H
 #define AVLTREE_H
 #include <iostream>
+#include <vector>
 
 struct Node {
     float value;
@@ -13,6 +14,21 @@ class AVLTree {
     public:
     void printTree() {
         printTree(root, 0, 10);
+    }
+    std::vector<float> searchPath(float value) {
+        return searchPath(root, value);
+    }
+    Node *getRoot() {
+        return root;
+    }
+    bool contains(float value) {
+        return contains(root, value);
+    }
+    float findMin() {
+        return findMin(root);
+    }
+    float findMax() {
+        return findMax(root);
     }
 private:
     Node* root;
@@ -236,6 +252,50 @@ public:
 
         printTree(root->left, space);
     }
+
+    std::vector<float> searchPath(Node* root, float value) {
+        std::vector<float> path;
+        while (root != nullptr) {
+            path.push_back(root->value);
+            if (value < root->value) {
+                root = root->left;
+            } else if (value > root->value) {
+                root = root->right;
+            } else {
+                return path;
+            }
+        }
+        return std::vector<float>(); // return empty vector if value not found
+    }
+    float findMin(Node* root) {
+    Node* current = root;
+    while (current && current->left != nullptr) {
+        current = current->left;
+    }
+    return current->value;
+}
+
+float findMax(Node* root) {
+    Node* current = root;
+    while (current && current->right != nullptr) {
+        current = current->right;
+    }
+    return current->value;
+}
+
+bool contains(Node* root, float value) {
+    if (root == nullptr) {
+        return false;
+    }
+    if (root->value == value) {
+        return true;
+    }
+    if (value < root->value) {
+        return contains(root->left, value);
+    } else {
+        return contains(root->right, value);
+    }
+}
 };
 
 
